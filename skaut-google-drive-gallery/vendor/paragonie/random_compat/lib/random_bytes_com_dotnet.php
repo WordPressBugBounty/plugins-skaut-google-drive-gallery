@@ -28,7 +28,7 @@ namespace Sgdg\Vendor;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
+if (!\is_callable('random_bytes')) {
     /**
      * Windows with PHP < 5.3.0 will not have the function
      * openssl_random_pseudo_bytes() available, so let's use

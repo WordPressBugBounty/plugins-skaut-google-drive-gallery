@@ -371,7 +371,7 @@ class AccessToken
      */
     protected function callSimpleJwtDecode(array $args = [])
     {
-        return \call_user_func_array(['Sgdg\\Vendor\\SimpleJWT\\JWT', 'decode'], $args);
+        return \call_user_func_array(['SimpleJWT\\JWT', 'decode'], $args);
     }
     /**
      * Generate a cache key based on the cert location using sha1 with the

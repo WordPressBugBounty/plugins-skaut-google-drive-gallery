@@ -2,7 +2,7 @@
 
 namespace Sgdg\Vendor;
 
-if (!\is_callable('Sgdg\\Vendor\\random_int')) {
+if (!\is_callable('random_int')) {
     /**
      * Random_* Compatibility Library
      * for using the new PHP 7 random_* API in PHP 5 projects

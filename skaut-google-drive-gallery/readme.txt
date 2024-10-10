@@ -3,7 +3,7 @@ Contributors: skaut, marekdedic, kalich5
 Tags: google drive, gallery, google drive gallery, image gallery, video gallery
 Requires at least: 4.9.6
 Tested up to: 6.6
-Stable tag: 2.13.13
+Stable tag: 2.13.14
 Requires PHP: 5.6
 License: MIT
 License URI: https://github.com/skaut/skaut-google-drive-gallery/blob/master/LICENSE
@@ -69,9 +69,6 @@ Unfortunately, this is a limitation of Google apps in testing mode, see Google's
 = I'm getting an unknown error =
 Please enable [WordPress debugging](https://wordpress.org/documentation/article/debugging-in-wordpress/) to see more information and open a support ticket if relevant.
 
-= I'm getting the error `refresh token must be passed in or set as part of setAccessToken` =
-This error happens for a small fraction of Google apps for an unknown reason. Please delete and recreate the application in the Google developer console.
-
 == Screenshots ==
 
 1. A simple gallery
@@ -87,6 +84,10 @@ This error happens for a small fraction of Google apps for an unknown reason. Pl
 6. Advanced options
 
 == Changelog ==
+
+= 2.13.14 =
+* Fixed encoding issues with the plugin icon
+* Updated lightbox to [v3](https://github.com/marekdedic/imagelightbox/releases/tag/3.0.0), fixing a number of issues
 
 = 2.13.13 =
 * Fixed an issue with gallery expiring after an hour. API access needs to be revoked and re-granted to fix the issue.

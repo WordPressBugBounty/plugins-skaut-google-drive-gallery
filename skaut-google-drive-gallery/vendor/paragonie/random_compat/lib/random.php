@@ -50,7 +50,7 @@ $RandomCompatDIR = \dirname(__FILE__);
 require_once $RandomCompatDIR . \DIRECTORY_SEPARATOR . 'byte_safe_strings.php';
 require_once $RandomCompatDIR . \DIRECTORY_SEPARATOR . 'cast_to_int.php';
 require_once $RandomCompatDIR . \DIRECTORY_SEPARATOR . 'error_polyfill.php';
-if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
+if (!\is_callable('random_bytes')) {
     /**
      * PHP 5.2.0 - 5.6.x way to implement random_bytes()
      *
@@ -86,7 +86,7 @@ if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
             $RandomCompatUrandom = array() !== \array_intersect(array('/dev', '/dev/', '/dev/urandom'), $RandomCompat_open_basedir);
             $RandomCompat_open_basedir = null;
         }
-        if (!\is_callable('Sgdg\\Vendor\\random_bytes') && $RandomCompatUrandom && @\is_readable('/dev/urandom')) {
+        if (!\is_callable('random_bytes') && $RandomCompatUrandom && @\is_readable('/dev/urandom')) {
             // Error suppression on is_readable() in case of an open_basedir
             // or safe_mode failure. All we care about is whether or not we
             // can read it at this point. If the PHP environment is going to
@@ -118,7 +118,7 @@ if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
      *   - If we're on Windows, we want to use PHP >= 5.3.7 or else
      *     we get insufficient entropy errors.
      */
-    if (!\is_callable('Sgdg\\Vendor\\random_bytes') && (\DIRECTORY_SEPARATOR === '/' || \PHP_VERSION_ID >= 50307) && (\DIRECTORY_SEPARATOR !== '/' || (\PHP_VERSION_ID <= 50609 || \PHP_VERSION_ID >= 50613)) && \extension_loaded('mcrypt')) {
+    if (!\is_callable('random_bytes') && (\DIRECTORY_SEPARATOR === '/' || \PHP_VERSION_ID >= 50307) && (\DIRECTORY_SEPARATOR !== '/' || (\PHP_VERSION_ID <= 50609 || \PHP_VERSION_ID >= 50613)) && \extension_loaded('mcrypt')) {
         // See random_bytes_mcrypt.php
         require_once $RandomCompatDIR . \DIRECTORY_SEPARATOR . 'random_bytes_mcrypt.php';
     }
@@ -127,7 +127,7 @@ if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
      * This is a Windows-specific fallback, for when the mcrypt extension
      * isn't loaded.
      */
-    if (!\is_callable('Sgdg\\Vendor\\random_bytes') && \extension_loaded('com_dotnet') && \class_exists('COM')) {
+    if (!\is_callable('random_bytes') && \extension_loaded('com_dotnet') && \class_exists('COM')) {
         $RandomCompat_disabled_classes = \preg_split('#\\s*,\\s*#', \strtolower(\ini_get('disable_classes')));
         if (!\in_array('com', $RandomCompat_disabled_classes)) {
             try {
@@ -147,7 +147,7 @@ if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
     /**
      * throw new Exception
      */
-    if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
+    if (!\is_callable('random_bytes')) {
         /**
          * We don't have any more options, so let's throw an exception right now
          * and hope the developer won't let it fail silently.
@@ -166,7 +166,7 @@ if (!\is_callable('Sgdg\\Vendor\\random_bytes')) {
         }
     }
 }
-if (!\is_callable('Sgdg\\Vendor\\random_int')) {
+if (!\is_callable('random_int')) {
     require_once $RandomCompatDIR . \DIRECTORY_SEPARATOR . 'random_int.php';
 }
 $RandomCompatDIR = null;
